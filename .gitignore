@@ -2,3 +2,8 @@ artifact.html
 웨딩사진/
 node_modules/
 backup/
+
+# 원본/소스 자산 — 사이트에서 직접 참조하지 않음
+# (사진은 images/ 로 리사이즈해 사용, 폰트는 실제 쓰는 3종만 fonts/ 에 둠)
+원본picture/
+font/
