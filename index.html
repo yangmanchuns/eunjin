@@ -605,13 +605,14 @@
 <script>
   var TARGET = new Date(2026,7,23,13,0,0); // 2026-08-23 13:00 (1부 시작)
 
-  /* ===== Supabase 설정: 아래 두 값만 본인 것으로 채우세요 =====
+  /* ===== Supabase 설정 (sunmyung 전용 프로젝트) =====
      Supabase → Settings → API 에서
-       Project URL     -> SUPABASE_URL
-       anon public key -> SUPABASE_ANON_KEY
+       Project URL      -> SUPABASE_URL
+       publishable key  -> SUPABASE_ANON_KEY  (공개용 키. 보안은 RLS 정책이 담당)
+     스키마/정책/버킷은 supabase_setup.sql 을 SQL Editor에서 실행해 생성.
      (두 값이 비어있으면 브라우저 로컬저장 모드로 동작합니다) */
-  var SUPABASE_URL = 'https://yzdphqaotttwgxswczvm.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6ZHBocWFvdHR0d2d4c3djenZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4ODAyOTcsImV4cCI6MjA5ODQ1NjI5N30.uB4oX7IQNesMD_-OzehkQu6_WylHXpwpIDW8YKONLMA';
+  var SUPABASE_URL = 'https://vdkjtxcnsroyfbcxgmvs.supabase.co';
+  var SUPABASE_ANON_KEY = 'sb_publishable_DW_mVJCiL9jRryJW2Njhew_PrSR8jrE';
   var sb = (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase)
     ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
@@ -850,9 +851,9 @@
     Array.prototype.forEach.call(files,function(f){
       var ext=(f.name.split('.').pop()||'jpg').toLowerCase();
       var path=Date.now()+'_'+Math.random().toString(36).slice(2,8)+'.'+ext;
-      sb.storage.from('wedding-photos').upload(path,f,{contentType:f.type||'image/jpeg'}).then(function(r){
+      sb.storage.from('sunmyung-photos').upload(path,f,{contentType:f.type||'image/jpeg'}).then(function(r){
         if(r.error){fail++;check();return;}
-        var pub=sb.storage.from('wedding-photos').getPublicUrl(path).data.publicUrl;
+        var pub=sb.storage.from('sunmyung-photos').getPublicUrl(path).data.publicUrl;
         sb.from('photos').insert({url:pub,path:path}).then(function(r2){ if(r2.error)fail++;else done++; check(); });
       },function(){fail++;check();});
     });
