@@ -9,12 +9,12 @@
 <meta property="og:title" content="소선명 ❤ 이은진 · 0823 웨딩파티" />
 <meta property="og:description" content="2026. 08. 23. SUN · 서울 화양동 선명" />
 <meta property="og:url" content="https://yangmanchuns.github.io/sunmyung/" />
-<meta property="og:image" content="https://yangmanchuns.github.io/sunmyung/images/main.jpg?v=2" />
-<meta property="og:image:width" content="1010" />
-<meta property="og:image:height" content="1400" />
+<meta property="og:image" content="https://yangmanchuns.github.io/sunmyung/images/main.jpg?v=3" />
+<meta property="og:image:width" content="900" />
+<meta property="og:image:height" content="1600" />
 <meta property="og:locale" content="ko_KR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://yangmanchuns.github.io/sunmyung/images/main.jpg?v=2" />
+<meta name="twitter:image" content="https://yangmanchuns.github.io/sunmyung/images/main.jpg?v=3" />
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js" crossorigin="anonymous"></script>
 <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=b811b9a27eda364420cbc58bd53d3fa8&autoload=false&libraries=services"></script>
@@ -413,8 +413,14 @@
       <button type="button" class="gcell gmore" onclick="openLightbox(16)"><img loading="lazy" src="images/gallery-17.jpg" alt="웨딩 사진 17" /></button>
       <button type="button" class="gcell gmore" onclick="openLightbox(17)"><img loading="lazy" src="images/gallery-18.jpg" alt="웨딩 사진 18" /></button>
       <button type="button" class="gcell gmore" onclick="openLightbox(18)"><img loading="lazy" src="images/gallery-19.jpg" alt="웨딩 사진 19" /></button>
+      <button type="button" class="gcell gmore" onclick="openLightbox(19)"><img loading="lazy" src="images/gallery-20.jpg" alt="웨딩 사진 20" /></button>
+      <button type="button" class="gcell gmore" onclick="openLightbox(20)"><img loading="lazy" src="images/gallery-21.jpg" alt="웨딩 사진 21" /></button>
+      <button type="button" class="gcell gmore" onclick="openLightbox(21)"><img loading="lazy" src="images/gallery-22.jpg" alt="웨딩 사진 22" /></button>
+      <button type="button" class="gcell gmore" onclick="openLightbox(22)"><img loading="lazy" src="images/gallery-23.jpg" alt="웨딩 사진 23" /></button>
+      <button type="button" class="gcell gmore" onclick="openLightbox(23)"><img loading="lazy" src="images/gallery-24.jpg" alt="웨딩 사진 24" /></button>
+      <button type="button" class="gcell gmore" onclick="openLightbox(24)"><img loading="lazy" src="images/gallery-25.jpg" alt="웨딩 사진 25" /></button>
     </div>
-    <div class="center-btn" style="margin-top:16px"><button type="button" id="galMore" class="btn btn-ghost" onclick="toggleGallery()">더보기 (10장)</button></div>
+    <div class="center-btn" style="margin-top:16px"><button type="button" id="galMore" class="btn btn-ghost" onclick="toggleGallery()">더보기 (16장)</button></div>
 
     <div style="height:34px"></div>
     <h3 class="stitle" style="font-size:18px">하객 사진</h3>
@@ -522,7 +528,7 @@
   </section>
 
   <!-- 마지막 감사 인사 (사진 + 글) -->
-  <section class="closing" style="background-image:linear-gradient(rgba(44,46,34,.36),rgba(44,46,34,.66)),url('images/main.jpg')">
+  <section class="closing" style="background-image:linear-gradient(rgba(44,46,34,.36),rgba(44,46,34,.66)),url('images/outro.jpg')">
     <p class="ct" data-lang="closing_text">다정한 선명이는 온기 가득한 날들을,<br/>현명한 은진이는 함께 기댈 터전을<br/>만들어가기로 약속했습니다.<br/><br/>서로를 의지하며<br/>단단한 삶을 만들어가겠습니다.<br/><br/>소중한 걸음으로 함께하시어<br/>저희의 새로운 시작을 축복해 주신다면,<br/>그 마음 오래도록 간직하며 살아가겠습니다.</p>
   </section>
 
@@ -687,7 +693,7 @@
 
   /* 갤러리 라이트박스 + 더보기 */
   var GALLERY_SRCS=[];
-  for(var _gi=1;_gi<=19;_gi++){GALLERY_SRCS.push('images/gallery-'+String(_gi).padStart(2,'0')+'.jpg');}
+  for(var _gi=1;_gi<=25;_gi++){GALLERY_SRCS.push('images/gallery-'+String(_gi).padStart(2,'0')+'.jpg');}
   var SECRET_SRCS=[];var _lbSrcs=GALLERY_SRCS;
   var lbIndex=0;
   function lbShow(){document.getElementById('lbImg').src=_lbSrcs[lbIndex];document.getElementById('lbCount').textContent=(lbIndex+1)+' / '+_lbSrcs.length;}
@@ -695,7 +701,7 @@
   function lbClose(){document.getElementById('lightbox').classList.remove('show');document.body.style.overflow='';}
   function lbNav(e,d){e.stopPropagation();lbIndex=(lbIndex+d+_lbSrcs.length)%_lbSrcs.length;lbShow();}
   function closeLightbox(e,force){if(force||(e&&e.target&&e.target.id==='lightbox')){if(_backClose){history.back();}else{lbClose();}}}
-  function toggleGallery(){var g=document.getElementById('galleryGrid'),b=document.getElementById('galMore');g.classList.toggle('open');b.textContent=g.classList.contains('open')?'접기':'더보기 (10장)';}
+  function toggleGallery(){var g=document.getElementById('galleryGrid'),b=document.getElementById('galMore');g.classList.toggle('open');b.textContent=g.classList.contains('open')?'접기':'더보기 (16장)';}
   /* 라이트박스 스와이프(좌우 넘기기) */
   (function(){var el=document.getElementById('lightbox');if(!el)return;var sx=null,sy=null;
     el.addEventListener('touchstart',function(e){if(e.touches.length===1){sx=e.touches[0].clientX;sy=e.touches[0].clientY;}},{passive:true});
@@ -875,9 +881,9 @@
         content:{
           title:'소선명 ❤ 이은진 · 0823 웨딩파티',
           description:'2026.08.23 (일) · 서울 화양동 <선명>',
-          imageUrl:'https://yangmanchuns.github.io/sunmyung/images/main.jpg?v=2',
-          imageWidth:1010,
-          imageHeight:1400,
+          imageUrl:'https://yangmanchuns.github.io/sunmyung/images/main.jpg?v=3',
+          imageWidth:900,
+          imageHeight:1600,
           link:{mobileWebUrl:SITE,webUrl:SITE}
         },
         buttons:[
