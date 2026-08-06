@@ -914,16 +914,16 @@
   /* 카카오 공유 — 청첩장 보기 / 위치 보기 버튼 카드 */
   function shareKakao(){
     var base=location.origin+location.pathname; if(base.charAt(base.length-1)!=='/') base=base.replace(/[^/]*$/,'');
-    /* "위치 보기" 는 우리 페이지의 오시는 길 섹션으로 보낸다.
-       카카오 공유 버튼 링크는 개발자사이트에 등록된 도메인만 허용해서,
-       map.naver.com 을 넣으면 등록 도메인 루트(yangmanchuns.github.io)로
-       바꿔치기되고 그 루트엔 페이지가 없어 404 가 났음. */
-    var SITE=base, MAP=base+'#location';
+    /* "위치 보기" -> map.html -> 네이버 지도.
+       카카오 공유 버튼 링크는 등록된 도메인만 허용해서 map.naver.com 을 바로
+       넣으면 등록 도메인 루트로 바꿔치기돼 404 가 난다. 그래서 우리 도메인의
+       map.html 로 보내고 거기서 네이버 지도로 넘긴다. */
+    var SITE=base, MAP=base+'map.html';
     if(window.Kakao && Kakao.isInitialized && Kakao.isInitialized() && Kakao.Share){
       Kakao.Share.sendDefault({
         objectType:'feed',
         content:{
-          title:'소선명 ❤ 이은진 · 0823 웨딩파티',
+          title:'소선명 ❤ 이은진 웨딩파티',
           description:'2026.08.23 (일) · 서울 화양동 <선명>',
           imageUrl:'https://yangmanchuns.github.io/sunmyung/images/main.jpg?v=3',
           imageWidth:900,
