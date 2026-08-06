@@ -101,9 +101,11 @@
   .bgm-btn.playing{opacity:1}
 
   /* ===== 1. 히어로 (어두운 사진 위 → 밝은 글씨) ===== */
-  .hero{height:100vh;min-height:560px;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative}
+  .hero{height:100vh;min-height:560px;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;position:relative}
   .hero .cover{position:absolute;inset:0;border:none;border-radius:0;min-height:0;height:100%}
-  .hero .inner{position:relative;z-index:2;padding:30px;color:#f7f6ec}
+  /* 글씨 블록을 화면 높이의 29% 지점에 고정. 세로 중앙정렬이면 화면이 짧은 폰
+     (카톡 인앱 브라우저 ~668px)에서 블록이 위로 올라와 신부 눈을 덮었음. */
+  .hero .inner{position:relative;z-index:2;padding:30px;color:#f7f6ec;margin-top:29vh}
   .hero .kicker{font-family:var(--serif);font-size:15px;letter-spacing:.24em;color:var(--hero-lime);margin-bottom:22px;font-weight:400}
   .hero h1{font-family:var(--serif);font-weight:700;font-size:40px;line-height:1.35;letter-spacing:.02em;color:#fff}
   .hero h1 .amp{display:block;color:var(--hero-lime);font-size:22px;margin:10px 0}
@@ -111,6 +113,14 @@
   .scroll-ind{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--hero-lime);font-size:11px;letter-spacing:.2em}
   .scroll-ind .chev{width:18px;height:18px;animation:bounce 1.6s infinite}
   @keyframes bounce{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(7px);opacity:1}}
+  /* 아주 짧은 화면(가로모드 등)에서는 글씨를 줄여 SCROLL 과 겹치지 않게 */
+  @media (max-height:720px){
+    .hero .kicker{font-size:13px;margin-bottom:14px}
+    .hero h1{font-size:32px}
+    .hero h1 .amp{font-size:18px;margin:6px 0}
+    .hero .when{margin-top:18px;font-size:12.5px;line-height:1.7}
+    .hero .inner{margin-top:32vh}
+  }
 
   /* ===== 2. 초대장 ===== */
   .invite{text-align:center}
@@ -540,7 +550,7 @@
     </div>
     <p class="foot-sign">이은진 · 소선명</p>
     <p class="foot-note">2026. 08. 23. SUN · 서울 화양동 &lt;선명&gt;</p>
-    <p class="foot-note" style="margin-top:6px;opacity:.7">본 초청장은 선명의 17년지기 병민이 직접 제작해준 고마운 선물입니다.</p>
+    <p class="foot-note" style="margin-top:6px;opacity:.7">본 초청장은 선명의 17년지기 병민이가 직접 제작해준 고마운 선물입니다.</p>
   </footer>
 
 </div>
