@@ -914,7 +914,11 @@
   /* 카카오 공유 — 청첩장 보기 / 위치 보기 버튼 카드 */
   function shareKakao(){
     var base=location.origin+location.pathname; if(base.charAt(base.length-1)!=='/') base=base.replace(/[^/]*$/,'');
-    var SITE=base, MAP='https://map.naver.com/p/search/화양동%20선명';
+    /* "위치 보기" 는 우리 페이지의 오시는 길 섹션으로 보낸다.
+       카카오 공유 버튼 링크는 개발자사이트에 등록된 도메인만 허용해서,
+       map.naver.com 을 넣으면 등록 도메인 루트(yangmanchuns.github.io)로
+       바꿔치기되고 그 루트엔 페이지가 없어 404 가 났음. */
+    var SITE=base, MAP=base+'#location';
     if(window.Kakao && Kakao.isInitialized && Kakao.isInitialized() && Kakao.Share){
       Kakao.Share.sendDefault({
         objectType:'feed',
@@ -938,6 +942,25 @@
 
   /* RSVP 자동 팝업 제거 — 하객이 직접 "참석 의사 전달하기" 버튼으로 엶 */
 
+  /* 카카오 공유 "위치 보기"(#location) 로 들어온 경우 오시는 길 섹션으로 이동.
+     브라우저 기본 앵커 이동이 먹지 않음 — 히어로가 100vh 이고 사진이 lazy-load 라
+     파싱 시점의 앵커 위치가 어긋남(실측 결과 scrollY 이 0 에서 안 움직였음).
+     그래서 load 후 직접 스크롤하고, 이미지가 자리를 잡는 동안 두 번 더 보정. */
+  (function(){
+    if(location.hash!=='#location')return;
+    var go=function(){
+      var el=document.getElementById('location');if(!el)return;
+      el.classList.add('in'); /* 스크롤 페이드인(.reveal)이 프로그램 이동에는 안 켜져 빈 화면이 됨 */
+      /* html 의 scroll-behavior:smooth 를 잠시 꺼야 즉시 이동한다.
+         scrollIntoView({behavior:'auto'}) 는 "CSS 값을 따르라"는 뜻이라 smooth 가
+         그대로 적용돼 이동이 안 됨(실측 scrollY=0). 인라인으로 auto 를 덮어씀. */
+      var root=document.documentElement,prev=root.style.scrollBehavior;
+      root.style.scrollBehavior='auto';
+      window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY);
+      root.style.scrollBehavior=prev;
+    };
+    window.addEventListener('load',function(){go();setTimeout(go,300);setTimeout(go,1200);});
+  })();
   /* 카카오 지도 */
   (function(){
     if(!(window.kakao && kakao.maps && kakao.maps.load))return;
