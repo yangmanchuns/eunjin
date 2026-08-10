@@ -101,11 +101,12 @@
   .bgm-btn.playing{opacity:1}
 
   /* ===== 1. 히어로 (어두운 사진 위 → 밝은 글씨) ===== */
-  .hero{height:100vh;min-height:560px;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;position:relative}
+  .hero{height:100vh;min-height:560px;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;position:relative}
   .hero .cover{position:absolute;inset:0;border:none;border-radius:0;min-height:0;height:100%}
-  /* 글씨 블록을 화면 높이의 29% 지점에 고정. 세로 중앙정렬이면 화면이 짧은 폰
-     (카톡 인앱 브라우저 ~668px)에서 블록이 위로 올라와 신부 눈을 덮었음. */
-  .hero .inner{position:relative;z-index:2;padding:30px;color:#f7f6ec;margin-top:52vh}
+  /* 글씨 블록은 화면 아래에 붙이고 "아래로" 인디케이터 위로만 띄운다.
+     vh 로 위치를 잡으면 화면 높이에 따라 인디케이터와 겹치거나(긴 화면)
+     얼굴을 덮는다(짧은 화면). 아래 고정이면 어느 폰에서도 겹치지 않는다. */
+  .hero .inner{position:relative;z-index:2;padding:30px;color:#f7f6ec;margin-bottom:84px}
   .hero .kicker{font-family:var(--serif);font-size:18px;letter-spacing:.24em;color:var(--hero-lime);margin-bottom:22px;font-weight:400}
   .hero h1{font-family:var(--serif);font-weight:700;font-size:48px;line-height:1.35;letter-spacing:.02em;color:#fff}
   .hero h1 .amp{display:block;color:var(--hero-lime);font-size:26.4px;margin:10px 0}
@@ -119,7 +120,7 @@
     .hero h1{font-size:38.4px}
     .hero h1 .amp{font-size:21.6px;margin:6px 0}
     .hero .when{margin-top:18px;font-size:15px;line-height:1.7}
-    .hero .inner{margin-top:48vh}
+    .hero .inner{margin-bottom:76px}
   }
 
   /* ===== 2. 초대장 ===== */
