@@ -353,8 +353,8 @@
   <section class="hero">
     <div class="cover" style="background:linear-gradient(180deg,rgba(44,46,34,.30),rgba(44,46,34,.72)),url('images/main.jpg') center/cover no-repeat"></div>
     <div class="inner">
-      <div class="kicker">WEDDING PARTY</div>
-      <h1>소선명<span class="amp" id="secretStar" onclick="secretTap()" style="cursor:default;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none">✦</span>이은진</h1>
+      <div class="kicker">SMALL WEDDING</div>
+      <h1>소선명<span class="amp">✦</span>이은진</h1>
       <div class="when">2026. 09. 20. SUN PM 12:30<br/>전주 &lt;연가&gt; 3층 백합홀</div>
     </div>
     <div class="scroll-ind">
@@ -444,16 +444,6 @@
     </div>
     <div class="center-btn" style="margin-top:16px"><button type="button" id="galMore" class="btn btn-ghost" onclick="toggleGallery()">더보기 (16장)</button></div>
 
-    <div style="height:34px"></div>
-    <h3 class="stitle" style="font-size:18px">하객 사진</h3>
-    <p style="text-align:center;color:var(--ink-mute);font-size:12.5px;margin:8px 0 0">올려주신 사진은 신랑·신부에게 소중히 전달됩니다</p>
-    <div class="upload-wrap">
-      <label class="btn btn-lime" style="cursor:pointer">
-        📷 사진 올리기
-        <input id="photoInput" type="file" accept="image/*" multiple style="display:none" onchange="uploadPhotos(this)" />
-      </label>
-      <span id="photoStatus" style="font-size:12px;color:var(--ink-mute)"></span>
-    </div>
   </section>
 
   <div class="divider"><span class="star">✦</span></div>
@@ -495,17 +485,6 @@
   </section>
 
   <div class="divider"><span class="star">✦</span></div>
-
-  <!-- 9. RSVP (임시 비활성화 — 필요 시 이 주석 블록을 해제)
-  <section>
-    <div class="eyebrow">R.S.V.P</div>
-    <h2 class="stitle">참석 여부 전달</h2>
-    <p style="text-align:center;color:var(--ink-mute);font-size:13px;margin:12px 0 22px">참석 여부를 미리 알려주시면<br/>정성껏 준비하는 데 큰 도움이 됩니다</p>
-    <div class="center-btn"><button class="btn btn-lime" onclick="openSheet('rsvpSheet')">참석 의사 전달하기</button></div>
-  </section>
-
-  <div class="divider"><span class="star">✦</span></div>
-  -->
 
   <!-- 10. 방명록 -->
   <section>
@@ -552,58 +531,12 @@
   <div class="lb-count" id="lbCount"></div>
 </div>
 
-<!-- RSVP 시트 -->
-<div class="overlay" id="rsvpSheet" onclick="if(event.target===this)closeSheet(this)">
-  <div class="sheet">
-    <div class="grab"></div>
-    <button class="x" onclick="closeSheet(this.closest('.overlay'))">✕</button>
-    <h3>참석 의사 전달</h3>
-    <p class="sub">소중한 마음 감사합니다</p>
-    <div class="field"><label>구분</label><div class="seg" id="segSide"><button type="button" aria-pressed="true" onclick="segPick(this)">신랑측</button><button type="button" aria-pressed="false" onclick="segPick(this)">신부측</button></div></div>
-    <div class="field"><label>참석 여부</label><div class="seg" id="segAttend"><button type="button" aria-pressed="true" onclick="segPick(this)">참석</button><button type="button" aria-pressed="false" onclick="segPick(this)">불참석</button></div></div>
-    <div class="field"><label>성함</label><input id="rsvpName" maxlength="20" placeholder="성함을 입력해주세요" /></div>
-    <div class="field"><label>참석 인원</label><input id="rsvpCount" type="number" min="1" placeholder="본인 포함 총 참석인원" /></div>
-    <div class="field"><label>동행인</label><input id="rsvpGuest" maxlength="40" placeholder="함께 오시는 분 성함" /></div>
-    <div class="field"><label>식사 여부</label><div class="seg" id="segMeal"><button type="button" aria-pressed="true" onclick="segPick(this)">예정</button><button type="button" aria-pressed="false" onclick="segPick(this)">안함</button><button type="button" aria-pressed="false" onclick="segPick(this)">미정</button></div></div>
-    <button class="btn btn-lime" style="width:100%;margin-top:6px" onclick="submitRsvp()">참석 의사 전달하기</button>
-  </div>
-</div>
-
-<!-- 비밀 공간: 비밀번호 -->
-<div class="overlay" id="secretPwSheet" onclick="if(event.target===this)closeSheet(this)">
-  <div class="sheet" style="text-align:center">
-    <div class="grab"></div>
-    <button class="x" onclick="closeSheet(this.closest('.overlay'))">✕</button>
-    <h3>🔒 비밀 공간</h3>
-    <p class="sub">비밀번호를 입력하세요</p>
-    <input id="secretPwInput" class="pw-input" type="tel" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="6" placeholder="••••••" onkeydown="if(event.key==='Enter')checkSecret()" />
-    <button class="btn btn-lime" style="width:100%" onclick="checkSecret()">확인</button>
-  </div>
-</div>
-
-<!-- 비밀 공간: 내용 -->
-<div class="overlay" id="secretSheet" onclick="if(event.target===this)closeSheet(this)">
-  <div class="sheet">
-    <div class="grab"></div>
-    <button class="x" onclick="closeSheet(this.closest('.overlay'))">✕</button>
-    <h3>비밀 공간</h3>
-    <p class="sub">신랑·신부만 보는 공간</p>
-    <div id="secretPhotos" class="sgrid"></div>
-    <div id="secretEmpty" class="gb-empty">아직 올라온 사진이 없어요</div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:16px">
-      <button type="button" id="dlAllBtn" class="btn btn-lime" style="display:none" onclick="downloadAllPhotos()">사진 전체 저장</button>
-      <span id="dlAllStatus" style="font-size:12px;color:var(--ink-mute);text-align:center;line-height:1.6"></span>
-      <span style="font-size:11px;color:var(--ink-mute);text-align:center;line-height:1.6;opacity:.8">하객 폰 원본이라 장당 수 MB 입니다.<br/>사진이 많으면 PC에서 저장하는 게 안전해요.</span>
-    </div>
-  </div>
-</div>
-
 <div class="toast" id="toast"></div>
 
 <script>
   var TARGET = new Date(2026,8,20,12,30,0); // 2026-09-20 12:30
 
-  /* ===== Supabase 설정 (sunmyung 전용 프로젝트) =====
+  /* ===== Supabase 설정 (0823 sunmyung 과 같은 프로젝트를 공유) =====
      Supabase → Settings → API 에서
        Project URL      -> SUPABASE_URL
        publishable key  -> SUPABASE_ANON_KEY  (공개용 키. 보안은 RLS 정책이 담당)
@@ -613,6 +546,15 @@
   var SUPABASE_ANON_KEY = 'sb_publishable_DW_mVJCiL9jRryJW2Njhew_PrSR8jrE';
   var sb = (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase)
     ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+
+  /* ===== 방명록 저장 위치 =====
+     0823 사이트(sunmyung)와 Supabase 프로젝트는 같이 쓰되, 테이블을 따로 둬서
+     두 청첩장의 방명록이 섞이지 않게 한다.
+     (무료 플랜은 조직당 프로젝트 2개 제한이라 프로젝트를 늘리지 않음)
+     이름을 바꾸려면 supabase_setup.sql 도 함께 고쳐 SQL Editor 에서 실행할 것.
+     0823 사이트와 같은 도메인이라 로컬저장 폴백 키도 접두어로 분리한다. */
+  var T_GUESTBOOK = 'guestbook_messages2';
+  var LS_GUESTBOOK = 'guestbook_eunjin';
 
   /* ===== 카카오 공유: JavaScript 키만 넣으세요 =====
      developers.kakao.com → 내 애플리케이션 → 앱 키 → JavaScript 키
@@ -673,10 +615,6 @@
   function openSheet(id){var el=document.getElementById(id);el.classList.add('show');document.body.style.overflow='hidden';pushBackClose(function(){el.classList.remove('show');document.body.style.overflow='';});}
   function closeSheet(el){if(_backClose){history.back();}else{el.classList.remove('show');document.body.style.overflow='';}}
 
-  /* 세그먼트 토글 */
-  function segPick(btn){var p=btn.parentElement;p.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed','false');});btn.setAttribute('aria-pressed','true');}
-  function segVal(id){var b=document.querySelector('#'+id+' [aria-pressed="true"]');return b?b.textContent:'';}
-
   /* 아코디언 */
   function toggleAcc(btn){btn.closest('.acc').classList.toggle('open');}
   function copyAcct(btn){var el=btn.closest('.acct').querySelector('.no');copyText(el?el.textContent.trim():'','계좌번호가 복사되었습니다');}
@@ -685,10 +623,10 @@
   /* 갤러리 라이트박스 + 더보기 */
   var GALLERY_SRCS=[];
   for(var _gi=1;_gi<=25;_gi++){GALLERY_SRCS.push('images/gallery-'+String(_gi).padStart(2,'0')+'.jpg');}
-  var SECRET_SRCS=[];var _lbSrcs=GALLERY_SRCS;
+  var _lbSrcs=GALLERY_SRCS;
   var lbIndex=0;
   function lbShow(){document.getElementById('lbImg').src=_lbSrcs[lbIndex];document.getElementById('lbCount').textContent=(lbIndex+1)+' / '+_lbSrcs.length;}
-  function openLightbox(i){_lbSrcs=GALLERY_SRCS;lbIndex=i;lbShow();document.getElementById('lightbox').classList.remove('lb-save');document.getElementById('lightbox').classList.add('show');document.body.style.overflow='hidden';pushBackClose(lbClose);}
+  function openLightbox(i){_lbSrcs=GALLERY_SRCS;lbIndex=i;lbShow();document.getElementById('lightbox').classList.add('show');document.body.style.overflow='hidden';pushBackClose(lbClose);}
   function lbClose(){document.getElementById('lightbox').classList.remove('show');document.body.style.overflow='';}
   function lbNav(e,d){e.stopPropagation();lbIndex=(lbIndex+d+_lbSrcs.length)%_lbSrcs.length;lbShow();}
   function closeLightbox(e,force){if(force||(e&&e.target&&e.target.id==='lightbox')){if(_backClose){history.back();}else{lbClose();}}}
@@ -708,119 +646,6 @@
   /* 토스트 */
   var toastTimer;
   function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){t.classList.remove('show');},1900);}
-
-  /* ===== 비밀 공간: 히어로 별 7번 클릭 → 비밀번호(260920) ===== */
-  var _starTaps=0,_starTimer=null;
-  function secretTap(){
-    _starTaps++;
-    if(_starTimer)clearTimeout(_starTimer);
-    _starTimer=setTimeout(function(){_starTaps=0;},2000);
-    if(_starTaps>=7){_starTaps=0;if(_starTimer)clearTimeout(_starTimer);openSecretPw();}
-  }
-  function openSecretPw(){var i=document.getElementById('secretPwInput');i.value='';openSheet('secretPwSheet');setTimeout(function(){try{i.focus();}catch(e){}},200);}
-  function checkSecret(){
-    var v=(document.getElementById('secretPwInput').value||'').trim();
-    if(v!=='260920'){toast('비밀번호가 올바르지 않아요');return;}
-    document.getElementById('secretPwSheet').classList.remove('show');
-    var el=document.getElementById('secretSheet');el.classList.add('show');document.body.style.overflow='hidden';
-    _backClose=function(){el.classList.remove('show');document.body.style.overflow='';};
-    loadSecretPhotos();
-  }
-  function openSecretLb(i){_lbSrcs=SECRET_SRCS;lbIndex=i;lbShow();document.getElementById('lightbox').classList.add('lb-save');document.getElementById('lightbox').classList.add('show');document.body.style.overflow='hidden';pushBackClose(lbClose);}
-  function loadSecretPhotos(){
-    var grid=document.getElementById('secretPhotos'),empty=document.getElementById('secretEmpty');
-    grid.innerHTML='';empty.textContent='불러오는 중…';empty.style.display='block';_dlBtn(0);
-    if(!sb){empty.textContent='Supabase 연결 후 볼 수 있어요';return;}
-    sb.from('photos').select('*').order('created_at',{ascending:false}).then(function(r){
-      if(r.error){empty.textContent='불러오기에 실패했어요 (사진 조회 권한 확인 필요)';empty.style.display='block';return;}
-      var rows=r.data||[];
-      if(!rows.length){empty.textContent='아직 올라온 사진이 없어요';empty.style.display='block';return;}
-      empty.style.display='none';
-      SECRET_SRCS=rows.map(function(x){return x.url;});_dlBtn(rows.length);
-      grid.innerHTML=rows.map(function(x,i){return '<button type="button" class="gcell" onclick="openSecretLb('+i+')"><img loading="lazy" src="'+x.url+'" alt="하객 사진" /></button>';}).join('');
-    });
-  }
-
-  /* ===== 하객 사진 일괄 저장 — ZIP 하나로 묶어 내려받기 =====
-     · JSZip 은 버튼을 누를 때만 CDN 에서 불러옴 (하객 페이지 로딩에 영향 없게)
-     · 한 장씩 순차로 받아 zip 에 넣음 — 동시에 받으면 폰 메모리가 터짐
-     · JPEG 는 압축이 거의 안 되므로 STORE(무압축)로 묶어 시간을 아낌 */
-  var _dlBusy=false;
-  function _dlBtn(n){
-    var b=document.getElementById('dlAllBtn'),st=document.getElementById('dlAllStatus');
-    if(!b)return;
-    if(n>0){b.style.display='inline-flex';b.textContent='사진 전체 저장 ('+n+'장)';}else{b.style.display='none';}
-    if(st)st.textContent='';
-  }
-  function _fmtMB(b){return (b/1048576).toFixed(1)+'MB';}
-  function _loadJSZip(){
-    return new Promise(function(res,rej){
-      if(window.JSZip)return res(window.JSZip);
-      var el=document.createElement('script');
-      el.src='https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js';
-      el.onload=function(){window.JSZip?res(window.JSZip):rej(new Error('압축 모듈 로드 실패'));};
-      el.onerror=function(){rej(new Error('압축 모듈을 불러올 수 없어요 (네트워크 확인)'));};
-      document.head.appendChild(el);
-    });
-  }
-  function downloadAllPhotos(){
-    if(_dlBusy)return;
-    var srcs=SECRET_SRCS.slice();
-    if(!srcs.length){toast('저장할 사진이 없어요');return;}
-    var btn=document.getElementById('dlAllBtn'),st=document.getElementById('dlAllStatus');
-    _dlBusy=true;btn.disabled=true;btn.style.opacity='.6';st.textContent='준비 중…';
-    _loadJSZip().then(function(JSZip){
-      var zip=new JSZip(),got=0,fail=0,bytes=0;
-      var step=function(i){
-        if(i>=srcs.length)return Promise.resolve();
-        st.textContent='받는 중 '+(i+1)+'/'+srcs.length+(bytes?(' · '+_fmtMB(bytes)):'');
-        return fetch(srcs[i],{cache:'no-store'}).then(function(r){
-          if(!r.ok)throw new Error(r.status);
-          return r.blob();
-        }).then(function(b){
-          var nm=(srcs[i].split('?')[0].split('/').pop()||('photo-'+(i+1)+'.jpg'));
-          zip.file(String(i+1).padStart(3,'0')+'_'+nm,b);
-          got++;bytes+=b.size;
-        }).catch(function(){fail++;}).then(function(){return step(i+1);});
-      };
-      return step(0).then(function(){
-        if(!got)throw new Error('사진을 하나도 받지 못했어요');
-        st.textContent='압축 중… ('+_fmtMB(bytes)+')';
-        return zip.generateAsync({type:'blob'},function(m){
-          st.textContent='압축 중… '+Math.round(m.percent)+'% ('+_fmtMB(bytes)+')';
-        });
-      }).then(function(blob){
-        var a=document.createElement('a'),u=URL.createObjectURL(blob);
-        a.href=u;a.download='하객사진_'+got+'장.zip';
-        document.body.appendChild(a);a.click();a.remove();
-        setTimeout(function(){URL.revokeObjectURL(u);},60000);
-        st.textContent='저장 완료 · '+got+'장 '+_fmtMB(bytes)+(fail?(' · '+fail+'장 실패'):'');
-        toast('사진 '+got+'장을 저장했어요 ✦');
-      });
-    }).catch(function(e){
-      st.textContent='실패: '+((e&&e.message)?e.message:'알 수 없는 오류');
-      toast('일괄 저장에 실패했어요');
-    }).then(function(){
-      _dlBusy=false;btn.disabled=false;btn.style.opacity='';
-    });
-  }
-  /* RSVP — Supabase 연결 시 DB 저장, 아니면 로컬 */
-  function submitRsvp(){
-    var name=document.getElementById('rsvpName').value.trim();
-    if(!name){toast('성함을 입력해주세요');return;}
-    var cnt=parseInt(document.getElementById('rsvpCount').value,10);
-    var rec={name:name,side:segVal('segSide'),attendance:segVal('segAttend'),guest_count:isNaN(cnt)?null:cnt,guest:document.getElementById('rsvpGuest').value.trim(),meal_preference:segVal('segMeal')};
-    var done=function(){
-      closeSheet(document.getElementById('rsvpSheet'));
-      toast('참석 의사가 전달되었습니다 ✦');
-    };
-    if(sb){
-      sb.from('rsvp_submissions').insert(rec).then(function(r){ if(r.error){toast('전달에 실패했어요');return;} done(); });
-    } else {
-      var arr=JSON.parse(localStorage.getItem('rsvp')||'[]');arr.push(rec);localStorage.setItem('rsvp',JSON.stringify(arr));
-      done();
-    }
-  }
 
   /* 방명록 — Supabase 연결 시 실시간 공유, 아니면 브라우저 로컬 */
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
@@ -844,8 +669,8 @@
   function toggleGb(){_gbExpanded=!_gbExpanded;paintGb(_gbAll);}
 
   function renderGb(){
-    if(sb){ sb.from('guestbook_messages').select('*').order('created_at',{ascending:false}).then(function(r){ paintGb(r.data||[]); }); }
-    else { paintGb(JSON.parse(localStorage.getItem('guestbook')||'[]').slice().reverse()); }
+    if(sb){ sb.from(T_GUESTBOOK).select('*').order('created_at',{ascending:false}).then(function(r){ paintGb(r.data||[]); }); }
+    else { paintGb(JSON.parse(localStorage.getItem(LS_GUESTBOOK)||'[]').slice().reverse()); }
   }
   function addGuestbook(){
     var a=document.getElementById('gbName').value.trim(),c=document.getElementById('gbMsg').value.trim();
@@ -853,42 +678,22 @@
     var ci=Math.floor(Math.random()*6);
     var clr=function(){document.getElementById('gbName').value='';document.getElementById('gbMsg').value='';};
     if(sb){
-      sb.from('guestbook_messages').insert({author:a,content:c,color_index:ci}).then(function(r){
+      sb.from(T_GUESTBOOK).insert({author:a,content:c,color_index:ci}).then(function(r){
         if(r.error){toast('등록에 실패했어요');return;}
         clr();renderGb();toast('축하 메시지가 등록되었습니다 ✦');
       });
     } else {
-      var arr=JSON.parse(localStorage.getItem('guestbook')||'[]');
+      var arr=JSON.parse(localStorage.getItem(LS_GUESTBOOK)||'[]');
       arr.push({author:a,content:c,color_index:ci,rot:(Math.random()*4-2),ts:Date.now()});
-      localStorage.setItem('guestbook',JSON.stringify(arr));
+      localStorage.setItem(LS_GUESTBOOK,JSON.stringify(arr));
       clr();renderGb();toast('축하 메시지가 등록되었습니다 ✦');
     }
   }
   renderGb();
 
-  /* 하객 사진 — Supabase Storage 업로드 (사이트에 표시 안 함, 커플에게만 수집) */
-  var _uploading=0;
-  window.addEventListener('beforeunload',function(e){if(_uploading>0){e.preventDefault();e.returnValue='';}});
-  function uploadPhotos(input){
-    if(!sb){ toast('사진 업로드는 배포+Supabase 연결 후 됩니다'); input.value=''; return; }
-    var files=input.files; if(!files||!files.length)return;
-    var st=document.getElementById('photoStatus'); st.textContent='업로드 중…'; toast('사진 업로드 중이에요. 완료까지 창을 닫지 말아주세요!');
-    var total=files.length, done=0, fail=0; _uploading+=total;
-    function check(){ _uploading=Math.max(0,_uploading-1); if(done+fail>=total){ st.textContent=fail?('일부 실패 ('+fail+'/'+total+')'):'전달 완료 ✦ 감사합니다'; input.value=''; setTimeout(function(){st.textContent='';},2500); } }
-    Array.prototype.forEach.call(files,function(f){
-      var ext=(f.name.split('.').pop()||'jpg').toLowerCase();
-      var path=Date.now()+'_'+Math.random().toString(36).slice(2,8)+'.'+ext;
-      sb.storage.from('sunmyung-photos').upload(path,f,{contentType:f.type||'image/jpeg'}).then(function(r){
-        if(r.error){fail++;check();return;}
-        var pub=sb.storage.from('sunmyung-photos').getPublicUrl(path).data.publicUrl;
-        sb.from('photos').insert({url:pub,path:path}).then(function(r2){ if(r2.error)fail++;else done++; check(); });
-      },function(){fail++;check();});
-    });
-  }
-
   /* 실시간 구독 (Supabase 연결 시) — 방명록만 */
   if(sb){
-    sb.channel('gb').on('postgres_changes',{event:'INSERT',schema:'public',table:'guestbook_messages'},function(){renderGb();}).subscribe();
+    sb.channel('gb-eunjin').on('postgres_changes',{event:'INSERT',schema:'public',table:T_GUESTBOOK},function(){renderGb();}).subscribe();
   }
 
   /* 카카오 공유 — 청첩장 보기 / 위치 보기 버튼 카드 */
@@ -919,8 +724,6 @@
       copyText(SITE,'카카오 키 연결 전이라 링크를 복사했어요');
     }
   }
-
-  /* RSVP 자동 팝업 제거 — 하객이 직접 "참석 의사 전달하기" 버튼으로 엶 */
 
   /* 카카오 공유 "위치 보기"(#location) 로 들어온 경우 오시는 길 섹션으로 이동.
      브라우저 기본 앵커 이동이 먹지 않음 — 히어로가 100vh 이고 사진이 lazy-load 라
