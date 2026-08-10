@@ -130,11 +130,11 @@
   .invite .eyebrow{margin-bottom:32px}
   .invite .sign{margin-top:26px;font-family:var(--serif);font-size:15px;color:var(--lime)}
   .invite .ministar{color:var(--lime);font-size:16px;margin:0 0 18px;letter-spacing:.5em}
-  .parents{display:flex;flex-direction:column;gap:18px;align-items:center;margin:8px 0 28px;font-family:var(--serif)}
-  .prow{display:grid;grid-template-columns:60px 54px auto;align-items:center;gap:10px;justify-content:center}
-  .prow .pnames{text-align:left;line-height:1.55;font-size:16px;color:var(--ink)}
+  .parents{display:grid;grid-template-columns:auto auto auto;align-items:baseline;gap:16px 9px;justify-content:center;margin:8px 0 28px;font-family:var(--serif)}
+  .prow{display:contents}
+  .prow .pnames{text-align:right;font-size:16px;color:var(--ink);white-space:nowrap}
   .prow .prel{color:var(--ink-mute);font-size:14px;white-space:nowrap;text-align:center}
-  .prow .pchild{font-weight:700;font-size:19px;color:var(--ink)}
+  .prow .pchild{text-align:left;font-weight:700;font-size:19px;color:var(--ink);white-space:nowrap}
 
   /* ===== 3. 연락처 ===== */
   .center-btn{display:flex;justify-content:center}
@@ -369,17 +369,17 @@
   <section class="invite">
     <div class="parents">
       <div class="prow">
-        <span class="pnames">소일혁<br/>전성예</span>
+        <span class="pnames">소일혁 · 전성예</span>
         <span class="prel">의 아들</span>
-        <span class="pchild">선명</span>
+        <span class="pchild">소선명</span>
       </div>
       <div class="prow">
-        <span class="pnames">한정인<br/>권명희</span>
+        <span class="pnames">한정인 · 권명희</span>
         <span class="prel">의 딸</span>
-        <span class="pchild">은진</span>
+        <span class="pchild">이은진</span>
       </div>
     </div>
-    <div class="eyebrow">초대합니다</div>
+    <div class="eyebrow">두 사람의 이야기</div>
     <p class="msg">마지막 손님을 보내고 퇴근한 새벽, 보고 싶은 마음에 고등어봉초밥을 만들어 은진이에게 달려갔습니다. 하루 종일 땀과 생선 냄새가 밴 채였지만, 은진이는 저를 꼭 안아주며 환하게 웃었습니다. 그 순간, 이 사람과 함께 살아가고 싶다는 마음이 들었습니다.
 
 선명이에게서 종종 제 모습이 겹쳐 보였습니다. 타지에서 지금의 자리까지 묵묵히 걸어온 모습이 대견했고, 단골과 지인에게 늘 아낌없이 마음을 내어주는 이유도 조금은 알 것 같았습니다. 앞으로는 기쁜 날에도, 힘든 날에도 평생 같은 편이 되어주고 싶었습니다.
